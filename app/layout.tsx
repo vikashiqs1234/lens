@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Serif_Display, Epilogue } from 'next/font/google'
 import "./globals.css";
+import Header from '@/app/components/Header'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-dm-serif'
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const epilogue = Epilogue({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-epilogue'
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,10 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"  className={`${dmSerif.variable} ${epilogue.variable}`}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      
       >
+       <Header/>
         {children}
       </body>
     </html>
