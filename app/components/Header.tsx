@@ -25,7 +25,7 @@ const Header = () => {
 
       {/* Main header with logo, search and actions */}
       <div className="bg-white py-4 px-6 border-b border-gray-200">
-        <div className="container mx-auto flex flex-wrap items-center justify-between">
+        <div className=" flex flex-wrap items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">

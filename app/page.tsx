@@ -1,8 +1,9 @@
 import React from 'react'
+import LandingPageBanner from './components/client-components/LandingPageBanner'
 
 const page = () => {
   return (
-    <div>page</div>
+  <LandingPageBanner/>
   )
 }
 
