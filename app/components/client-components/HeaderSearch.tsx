@@ -5,8 +5,8 @@ import {FaSearch} from 'react-icons/fa'
 const HeaderSearch = () => {
     const [searchQuery, setSearchQuery] = useState('');
   return (
-   <div className=" md:w-auto flex-grow mx-4 mt-4 md:mt-0 order-3 md:order-2">
-            <div className="relative  mx-auto">
+   
+            <div className="relative  w-full">
               <input
                 type="text"
                 className="w-full border border-gray-300 rounded px-4 py-2 pl-3 pr-10 focus:outline-none focus:ring-1 focus:ring-blue-500"
@@ -18,7 +18,7 @@ const HeaderSearch = () => {
                 <FaSearch className="text-gray-400" />
               </button>
             </div>
-          </div> 
+         
   )
 }
 

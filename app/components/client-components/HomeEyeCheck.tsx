@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const HomeEyeCheckBanner = () => {
   return (
-    <div className="w-full bg-white">
+    <div className="absolute z-[100] left-0 w-full  bg-white">
       <div className="max-w-6xl mx-auto p-4 flex flex-col md:flex-row items-center">
         {/* Left side - Image */}
         <div className="md:w-1/2 mb-6 md:mb-0">

@@ -80,7 +80,7 @@ const EyeglassesCategory = () => {
   const currentData = getCurrentData();
 
   return (
-    <div className="container bg-white w-[96%] pl-6 mx-auto py-4">
+    <div className=" absolute z-[100] left-0 w-full  bg-white  pl-6 py-4">
       <div className="grid grid-cols-5 gap-4">
         {/* Select Category */}
         <div className="col-span-1">

@@ -42,7 +42,7 @@ export default function ContactLenses() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="absolute z-[100] left-0 w-full bg-white">
       <Head>
         <title>Contact Lens Comparison</title>
         <meta name="description" content="Compare different contact lens options" />
