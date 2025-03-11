@@ -47,7 +47,7 @@ const Header = () => {
           </div>
 
           {/* Header Search */}
-          <div className="order-2 w-[30%] md:w-auto mt-2 md:mt-0">
+          <div className="order-2  md:w-[40%] mt-2 md:mt-0">
             <HeaderSearch />
           </div>
 

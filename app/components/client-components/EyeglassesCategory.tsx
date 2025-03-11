@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const categoriesData = [
@@ -8,19 +9,22 @@ const categoriesData = [
     priceCategory: [
       {
         name: "CLASSIC EYEGLASSES Starting From ₹2000",
-        frameTypes: ["Rectangle Frames", "Wayfarer Frames"],
+        price:2000,
+        frameShapes: ["Rectangle Frames", "Wayfarer Frames","Pentagonal"],
         collections: ["Switch Grip", "Urban Edit"],
         brands: ["Vincent Chase", "Lenskart Air"],
       },
       {
         name: "PREMIUM EYEGLASSES Starting From ₹3500",
-        frameTypes: ["Round Frames"],
+        price:3500,
+        frameShapes: ["Round Frames"],
         collections: ["Gulmarg Collection"],
         brands: ["OUOS"],
       },
       {
         name: "SCREEN EYEGLASSES Starting From ₹500",
-        frameTypes: ["Rectangle Frames"],
+        price:500,
+        frameShapes: ["Rectangle Frames"],
         collections: ["Switch Grip"],
         brands: ["Vincent Chase"],
       },
@@ -32,13 +36,15 @@ const categoriesData = [
     priceCategory: [
       {
         name: "CLASSIC EYEGLASSES Starting From ₹2000",
-        frameTypes: ["Aviator Frames"],
+        price:2000,
+        frameShapes: ["Aviator Frames"],
         collections: ["Blend Edit"],
         brands: ["Lenskart Air"],
       },
       {
         name: "PREMIUM EYEGLASSES Starting From ₹3500",
-        frameTypes: ["Cat-Eye Frames"],
+        price:3500,
+        frameShapes: ["Cat-Eye Frames"],
         collections: ["Sleek Steel"],
         brands: ["Vincent Chase"],
       },
@@ -50,7 +56,8 @@ const categoriesData = [
     priceCategory: [
       {
         name: "SCREEN EYEGLASSES Starting From ₹500",
-        frameTypes: ["Halfrim Frames", "Geometric Frames"],
+        price:500,
+        frameShapes: ["Halfrim Frames", "Geometric Frames"],
         collections: ["Air Flex", "Electro Punk"],
         brands: ["Vincent Chase", "Lenskart Air"],
       },
@@ -60,6 +67,7 @@ const categoriesData = [
 
 const EyeglassesCategory = () => {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const [activePriceCategoryIndex, setActivePriceCategoryIndex] = useState(0);
   const [hoveredPriceCategory, setHoveredPriceCategory] = useState<any>(null);
 
   const handleCategoryHover = (index:number) => {
@@ -67,8 +75,9 @@ const EyeglassesCategory = () => {
     setHoveredPriceCategory(null); // Reset Price Category when switching categories
   };
 
-  const handlePriceCategoryHover = (priceCategory:any) => {
+  const handlePriceCategoryHover = (priceCategory:any,index:number) => {
     setHoveredPriceCategory(priceCategory);
+    setActivePriceCategoryIndex(index)
   };
 
   const getCurrentData = () => {
@@ -112,15 +121,15 @@ const EyeglassesCategory = () => {
         <div className="col-span-1">
           <h3 className="font-semibold text-gray-700 mb-2">PRICE CATEGORY</h3>
           {categoriesData[activeCategoryIndex]?.priceCategory.map(
-            (priceItem) => (
+            (priceItem,index) => (
               <p
                 key={priceItem.name}
                 className={`py-2 px-3 rounded hover:bg-[#f3d7bc] cursor-pointer text-sm text-gray-700 ${
-                  hoveredPriceCategory?.name === priceItem.name
+                  activePriceCategoryIndex === index
                     ? "bg-[#f3d7bc]"
                     : ""
                 }`}
-                onMouseEnter={() => handlePriceCategoryHover(priceItem)}
+                onMouseEnter={() => {handlePriceCategoryHover(priceItem,index);}}
               >
                 {priceItem.name}
               </p>
@@ -130,13 +139,13 @@ const EyeglassesCategory = () => {
 
         {/* Frame Type */}
         <div className="col-span-1">
-          <h3 className="font-semibold text-gray-700 mb-2">FRAME TYPE</h3>
-          {currentData.frameTypes.map((frame:any) => (
+          <h3 className="font-semibold text-gray-700 mb-2">FRAME SHAPE</h3>
+          {currentData.frameShapes.map((frame:any) => (
             <p
               key={frame}
-              className="py-2 rounded hover:bg-gray-100 cursor-pointer text-sm text-gray-700"
+              className="py-2  mt-1 rounded hover:bg-gray-100 cursor-pointer text-sm text-gray-700"
             >
-              {frame}
+             <Link href={`/products?category=${categoriesData[activeCategoryIndex].category}&priceCategory=${categoriesData[activeCategoryIndex].priceCategory[activePriceCategoryIndex].price}&frameShape=${frame}`}> {frame}</Link>
             </p>
           ))}
         </div>
