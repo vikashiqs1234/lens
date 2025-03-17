@@ -62,27 +62,7 @@ const Navbar = () => {
           </li>
          
         </ul>
-        <div className="flex ml-auto items-center space-x-2 py-4 px-4">
-          <Link
-            href="/3d-try-on"
-            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors duration-200"
-          >
-            3D TRY ON
-          </Link>
-          <Link
-            href="/blu"
-            className="bg-white border border-gray-300 text-gray-900 px-4 py-2 rounded hover:bg-gray-100 transition-colors duration-200"
-          >
-            BLU
-          </Link>
-          <Link 
-            href="/gold" 
-            className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-black transition-colors duration-200"
-          >
-            GOLD
-            <span className="text-xs text-gray-300 ml-1 font-bold">MAX</span>
-          </Link>
-        </div>
+       
       </nav>
 
       {/* Conditional Rendering of Components - Only ONE at a time */}

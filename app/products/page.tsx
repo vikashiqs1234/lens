@@ -1,67 +1,38 @@
-// app/products/page.tsx
-
 'use client'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import ProductCard from './ProductCard'
 
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { IProduct } from '@/models/Product' // your TS interface
-
-export default function ProductsPage() {
-  const searchParams = useSearchParams()
-
-  const category = searchParams.get('category')
-  const priceCategory = searchParams.get('priceCategory')
-  const frameShape = searchParams.get('frameShape');
-  const brand = searchParams.get('brand');
-  const collection = searchParams.get('collection')
-
-  const [products, setProducts] = useState<IProduct[]>([])
-  const [loading, setLoading] = useState(true)
+const Page = () => {
+  const [products, setProducts] = useState<any[]>([])
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const query = new URLSearchParams({
-          ...(category && { category }),
-          ...(priceCategory && { priceCategory }),
-          ...(frameShape && { frameShape }),
-          ...(brand && { brand }),
-          ...(collection && { collection }),
-        })
-
-        const res = await fetch(`/api/get-products?${query.toString()}`)
-        const data = await res.json()
-        setProducts(data.products || [])
-      } catch (err) {
-        console.error('Error fetching products:', err)
-      } finally {
-        setLoading(false)
-      }
+    const getData = async () => {
+      const res = await axios.get('/api/get-products')
+      console.log(res.data.products)
+      setProducts(res.data.products)
     }
-
-    fetchProducts()
-}, [category, priceCategory, frameShape, brand, collection])
+    getData()
+  }, [])
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Filtered Products</h1>
-
-      {loading ? (
-        <p>Loading...</p>
-      ) : products.length > 0 ? (
-        <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <li key={product.productId} className="border p-4 rounded-xl shadow-sm">
-              <h2 className="text-lg font-semibold">{product.productName}</h2>
-              <p className="text-sm text-gray-500">{product.brand}</p>
-              <p className="text-sm">{product.frameShape}</p>
-              <p className="text-sm font-medium mt-1">₹{product.payablePrice}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No products found for selected filters.</p>
-      )}
+    <div className="min-h-screen bg-gray-100 py-10 px-4">
+      <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Our Products</h2>
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl mx-auto">
+        {products.map((item: any, index: number) => (
+          <ProductCard
+            key={index}
+            price={item?.price}
+            discount={item?.discount}
+            images={item?.images}
+            frameMaterial={item?.frameMaterial}
+            frameSize={item?.frameSize}
+            brandName={item?.brandName}
+          />
+        ))}
+      </div>
     </div>
   )
 }
+
+export default Page

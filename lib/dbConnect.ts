@@ -23,7 +23,7 @@ export async function connectToDatabase() {
   if (!cached.promise) {
     console.log('[MongoDB] Connecting to database...')
     cached.promise = mongoose.connect(MONGODB_URI, {
-    dbName:"specsvaue",
+    dbName:"specsvue-db",
       bufferCommands: false,
     })
   }

@@ -10,7 +10,7 @@ const ProductSchema = new Schema(
     frameShape: { type: String, required: true },
     modelNumber: { type: String, required: true, unique: true },
     frameSize: { type: String, required: true },
-    frameWidth: { type: Number, required: true },
+    frameWidth: { type: String, required: true },
     frameDimensions: { type: String, required: true },
     frameColor: { type: String, required: true },
     weight: { type: String, required: true },
@@ -24,9 +24,12 @@ const ProductSchema = new Schema(
     collection: { type: String, required: true },
     productWarranty: { type: String, required: true },
     gender: { type: String, required: true },
-    height: { type: Number, required: true },
+    height: { type: String, required: true },
     condition: { type: String, required: true },
     templeColor: { type: String, required: true },
+    price: { type: String, required: true },
+    discount: { type: String, required: true },
+    images:{type:Array,required:true}
   },
   { timestamps: true }
 );
@@ -34,5 +37,6 @@ const ProductSchema = new Schema(
 export type IProduct = InferSchemaType<typeof ProductSchema>;
 
 const Product = models.Product || model<IProduct>('Product', ProductSchema);
+// const Product =  model<IProduct>('Product', ProductSchema);
 
 export default Product;

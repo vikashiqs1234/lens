@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="w-full">
       {/* Top navigation bar */}
-      <div className="bg-white border-b border-gray-200 text-xs text-gray-700 py-1">
+      {/* <div className="bg-white border-b border-gray-200 text-xs text-gray-700 py-1">
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex flex-wrap items-center justify-between">
             <Link href="/" className="hover:text-blue-600">
@@ -21,7 +21,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Main header with logo, search and actions */}
       <div className="bg-white py-4 px-4 sm:px-6 md:px-8 border-b border-gray-200">
@@ -54,21 +54,14 @@ const Header = () => {
           {/* Action buttons */}
           <div className="flex items-center space-x-4 order-3">
             <div className="hidden md:flex items-center space-x-4">
-              <Link
-                href="/track-order"
-                className="text-sm hover:text-blue-600"
-              >
-                Track Order
-              </Link>
+            
               <Link href="/signin" className="text-sm hover:text-blue-600">
                 Sign In & Sign Up
               </Link>
             </div>
 
             <div className="flex items-center space-x-4">
-              <Link href="/wishlist" className="relative">
-                <FaHeart className="text-2xl text-gray-700 hover:text-blue-600 transition-colors" />
-              </Link>
+              
               <Link href="/cart" className="relative">
                 <FaShoppingCart className="text-2xl text-gray-700 hover:text-blue-600 transition-colors" />
               </Link>

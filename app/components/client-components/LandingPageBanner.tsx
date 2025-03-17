@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import Link from 'next/link';
 
 // Reusable Glass Frame Component using Three.js and React Three Fiber
 const GlassFrame = ({ color = '#ffffff', ...props }) => {
@@ -145,7 +146,7 @@ const LandingPageBanner = () => {
 
     return (
         <motion.div
-            className="relative w-full h-[80vh] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+            className="relative w-full h-[calc(100vh-128px)] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -213,8 +214,9 @@ const LandingPageBanner = () => {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
+                            
                         >
-                            Discover Now
+                          <Link href={'/products'}>Shope Now</Link>
                         </motion.button>
                         <motion.button
                             className="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-black transition-all"
