@@ -1,100 +1,59 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import EyeglassesCategory from "./EyeglassesCategory"; // Make sure this component exists
-import ScreenGlassesCategory from "./ScreenGlasses"; // Create this component (or reuse EyeglassesCategory with different props)
-import KidsGlasses from "./KidsGlasses";
-import ContactLenses from "./ContactLenses";
-import SunGlassesCategory from "./SunGlassesCategory";
-import HomeEyeCheckBanner from "./HomeEyeCheck";
+'use client';
+import React, { useState } from 'react';
+import EyeglassesCategory from './EyeglassesCategory';
+import ScreenGlassesCategory from './ScreenGlasses';
+import KidsGlasses from './KidsGlasses';
+import ContactLenses from './ContactLenses';
+import SunGlassesCategory from './SunGlassesCategory';
+import HomeEyeCheckBanner from './HomeEyeCheck';
+
+const componentMap = {
+  eyeglasses: EyeglassesCategory,
+  screenglasses: ScreenGlassesCategory,
+  kidsglasses: KidsGlasses,
+  contactlens: ContactLenses,
+  sunglasses: SunGlassesCategory,
+  homeeyecheck: HomeEyeCheckBanner,
+};
+
+// Create a type of all keys
+type ComponentKey = keyof typeof componentMap;
 
 const Navbar = () => {
-  const [activeComponent, setActiveComponent] = useState(null); // 'eyeglasses' | 'screenglasses' | null
+  const [activeComponent, setActiveComponent] = useState<ComponentKey | null>(null);
 
   const handleMouseLeave = () => {
-    // Introduce a delay before hiding the components
     setTimeout(() => {
       setActiveComponent(null);
-    }, 200); // Adjust the delay (milliseconds) as needed
+    }, 200);
   };
 
-  const handleMouseEnter = (componentName:any) => {
+  const handleMouseEnter = (componentName: ComponentKey) => {
     setActiveComponent(componentName);
   };
 
   return (
-    <div className="relative">
-      <nav className="flex items-center space-x-6 py-2 whitespace-nowrap px-8 bg-gray-100 border-b border-gray-200 shadow-sm">
-        <ul className="flex space-x-6">
-          <li
-            onMouseEnter={() => handleMouseEnter("eyeglasses")}
-            className="text-gray-900 p-2 font-medium hover:text-black hover:bg-gray-200 rounded transition-colors duration-200 list-none text-sm cursor-pointer"
-          >
-            EYEGLASSES
-          </li>
-
-          <li
-            onMouseEnter={() => handleMouseEnter("screenglasses")}
-            className="text-gray-900 p-2 font-medium hover:text-black hover:bg-gray-200 rounded transition-colors duration-200 list-none text-sm cursor-pointer"
-          >
-            SCREEN GLASSES
-          </li>
-
-          <li
-           onMouseEnter={() => handleMouseEnter("kidsglasses")}
-           className="text-gray-900 p-2 font-medium hover:text-black hover:bg-gray-200 rounded transition-colors duration-200 list-none text-sm cursor-pointer">
-            KIDS GLASSES
-          </li>
-          <li 
-            onMouseEnter={() => handleMouseEnter("contactlens")}
-            className="text-gray-900 p-2 font-medium hover:text-black hover:bg-gray-200 rounded transition-colors duration-200 list-none text-sm cursor-pointer">
-            CONTACT LENSES
-          </li>
-          <li 
-           onMouseEnter={() => handleMouseEnter("sunglasses")}
-           className="text-gray-900 p-2 font-medium hover:text-black hover:bg-gray-200 rounded transition-colors duration-200 list-none text-sm cursor-pointer">
-            SUN GLASSES
-          </li>
-          <li
-            onMouseEnter={() => handleMouseEnter("homeeyecheck")}
-            className="text-gray-900 p-2 font-medium hover:text-black hover:bg-gray-200 rounded transition-colors duration-200 list-none text-sm cursor-pointer">
-            HOME EYE-TEST
-          </li>
-         
+    <div className="relative w-full">
+      <nav className="bg-[#fbf9f7] border-b border-gray-200 px-4 sm:px-6 md:px-8">
+        <ul className="flex items-center space-x-4 overflow-x-auto py-3 text-sm font-medium text-gray-700">
+          {Object.keys(componentMap).map((key) => (
+            <li
+              key={key}
+              onMouseEnter={() => handleMouseEnter(key as ComponentKey)}
+              className="px-3 py-2 cursor-pointer hover:text-blue-600 transition-colors whitespace-nowrap rounded hover:bg-gray-100"
+            >
+              {key.replace(/([A-Z])/g, ' $1').toUpperCase()}
+            </li>
+          ))}
         </ul>
-       
       </nav>
 
-      {/* Conditional Rendering of Components - Only ONE at a time */}
-      {activeComponent === "eyeglasses" && (
-        <div onMouseLeave={handleMouseLeave} className="bg-white shadow-md border border-gray-200">
-          <EyeglassesCategory />
-        </div>
-      )}
-
-      {activeComponent === "screenglasses" && (
-        <div onMouseLeave={handleMouseLeave} className="bg-white shadow-md border border-gray-200">
-          <ScreenGlassesCategory />
-        </div>
-      )}
-      {activeComponent === "kidsglasses" && (
-        <div onMouseLeave={handleMouseLeave} className="bg-white shadow-md border border-gray-200">
-          <KidsGlasses />
-        </div>
-      )}
-      {activeComponent === "contactlens" && (
-        <div onMouseLeave={handleMouseLeave} className="bg-white shadow-md border border-gray-200">
-          <ContactLenses />
-        </div>
-      )}
-      {activeComponent === "sunglasses" && (
-        <div onMouseLeave={handleMouseLeave} className="bg-white shadow-md border border-gray-200">
-          <SunGlassesCategory />
-        </div>
-      )}
-      {activeComponent === "homeeyecheck" && (
-        <div onMouseLeave={handleMouseLeave} className="bg-white shadow-md border border-gray-200">
-          <HomeEyeCheckBanner />
+      {activeComponent && (
+        <div
+          onMouseLeave={handleMouseLeave}
+          className="absolute z-30 left-0 w-full  bg-white border border-t-0 border-gray-200 shadow-md"
+        >
+          {React.createElement(componentMap[activeComponent])}
         </div>
       )}
     </div>

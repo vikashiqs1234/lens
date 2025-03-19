@@ -1,364 +1,723 @@
-"use client";
-import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+"use client"
 
-const Home = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import {  ChevronRight, Instagram, Facebook, Twitter } from "lucide-react"
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const productCategories = [
-    { name: "Designer Frames", icon: "👓", desc: "Exclusive brands with signature styles" },
-    { name: "Prescription Glasses", icon: "🔍", desc: "Clear vision with customized lenses" },
-    { name: "Sunglasses", icon: "😎", desc: "UV protection with fashion-forward designs" },
-    { name: "Kids Collection", icon: "🧒", desc: "Durable and colorful options for children" }
-  ];
-
-  const testimonials = [
-    { name: "Sarah M.", review: "SpecsVue transformed my look! Their virtual try-on feature helped me find the perfect pair.", rating: 5 },
-    { name: "James L.", review: "Quality frames and excellent customer service. Will definitely shop here again!", rating: 5 },
-    { name: "Aisha T.", review: "Fast delivery and my glasses fit perfectly. The styles are trendy and affordable.", rating: 4 }
-  ];
-
+const FeaturesSection = () => {
   return (
-    <div className="font-sans bg-gradient-to-b from-indigo-50 to-white min-h-screen">
-      {/* Hero Section */}
-      <motion.section 
-        className="relative h-screen flex items-center justify-center overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-  
-
-      </motion.section>
-
-      {/* Featured Products */}
-      <motion.section 
-        className="py-16 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
-            variants={fadeInUp}
+    <section className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4"
           >
-            Trending Styles
+            Why Choose SpecsVue?
           </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <motion.div 
-                key={item}
-                className="bg-gray-50 rounded-xl overflow-hidden shadow-lg"
-                variants={fadeInUp}
-                whileHover={{ y: -10, transition: { duration: 0.2 } }}
-              >
-                <div className="h-64 bg-[url('/api/placeholder/400/320')] bg-cover bg-center relative">
-                  <div className="absolute top-4 right-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    New
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Designer Frame #{item}</h3>
-                  <p className="text-gray-600 mb-4">Modern design with premium materials</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-indigo-600 font-bold text-xl">${(99 + item * 20).toFixed(2)}</span>
-                    <motion.button 
-                      className="bg-indigo-600 text-white px-4 py-2 rounded-lg"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Add to Cart
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <motion.div 
-            className="text-center mt-12"
-            variants={fadeInUp}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            <motion.button 
-              className="text-indigo-600 border-2 border-indigo-600 px-8 py-3 rounded-full font-medium hover:bg-indigo-50 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View All Collections
-            </motion.button>
-          </motion.div>
+            We combine premium materials, cutting-edge technology, and expert craftsmanship to create eyewear that
+            enhances your vision and style.
+          </motion.p>
         </div>
-      </motion.section>
 
-      {/* Categories */}
-      <motion.section 
-        className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
-            variants={fadeInUp}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Premium Materials",
+              description:
+                "Our frames are crafted from high-quality, durable materials that ensure comfort and longevity.",
+              icon: "🔍",
+            },
+            {
+              title: "Advanced Lens Technology",
+              description:
+                "Experience crystal clear vision with our anti-glare, UV-protected, and blue light filtering lenses.",
+              icon: "✨",
+            },
+            {
+              title: "Expert Craftsmanship",
+              description:
+                "Each pair of glasses is meticulously crafted by skilled artisans with decades of experience.",
+              icon: "🛠️",
+            },
+            {
+              title: "Personalized Fitting",
+              description: "Get a perfect fit with our customization services to ensure maximum comfort all day long.",
+              icon: "👓",
+            },
+            {
+              title: "Stylish Designs",
+              description: "Stay on trend with our fashion-forward designs that complement your unique style.",
+              icon: "🎨",
+            },
+            {
+              title: "Affordable Luxury",
+              description: "Enjoy premium quality eyewear at accessible prices with our direct-to-consumer model.",
+              icon: "💰",
+            },
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Collections Section Component
+const CollectionsSection = () => {
+  return (
+    <section id="collections" className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4"
           >
-            Explore Categories
+            Our Collections
           </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {productCategories.map((category, index) => (
-              <motion.div 
-                key={index}
-                className="bg-white rounded-xl p-6 shadow-md text-center"
-                variants={fadeInUp}
-                whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-              >
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{category.name}</h3>
-                <p className="text-gray-600">{category.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Why Choose Us */}
-      <motion.section 
-        className="py-16 bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
-            variants={fadeInUp}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            Why Choose SpecsVue
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Quality Guaranteed</h3>
-              <p className="text-gray-600">Premium materials and craftsmanship for durability and comfort</p>
-            </motion.div>
-            
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Fast Delivery</h3>
-              <p className="text-gray-600">Quick processing and shipping to get your glasses to you promptly</p>
-            </motion.div>
-            
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">30-Day Returns</h3>
-              <p className="text-gray-600">No-questions-asked return policy for your peace of mind</p>
-            </motion.div>
-          </div>
+            Explore our diverse range of eyewear collections designed for every face shape, style preference, and visual
+            need.
+          </motion.p>
         </div>
-      </motion.section>
 
-      {/* Testimonials */}
-      <motion.section 
-        className="py-16 bg-indigo-900 text-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-center mb-12"
-            variants={fadeInUp}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Eyeglasses",
+              description: "Stylish frames with premium lenses for everyday vision",
+              image: "https://img.freepik.com/free-photo/cheerful-female-student-stylish-eyewear-rejoices-successfully-passed-exams-glad-have-meeting-with-groupmates-delighted-beautiful-pleased-woman-has-attractive-look-poses-indoors_176420-15099.jpg?t=st=1742310034~exp=1742313634~hmac=135062e5548c46286c8ed5b98c6553b9c155e3a924a77cd2b17e580acc689326&w=1380",
+              color: "from-blue-500 to-purple-500",
+            },
+            {
+              title: "Sunglasses",
+              description: "Protect your eyes with UV-blocking fashionable shades",
+              image: "https://img.freepik.com/free-photo/glamour-woman-protects-from-sun_329181-346.jpg?t=st=1742320126~exp=1742323726~hmac=2771f580d88612b6501dd9b08672b5a1915406769a9558dfb30d6019f5520b86&w=740",
+              color: "from-purple-500 to-pink-500",
+            },
+            {
+              title: "Screenglasses",
+              description: "Reduce eye strain with blue light filtering technology",
+              image: "https://img.freepik.com/free-photo/portrait-woman-looking-laptop-late-night_23-2148465443.jpg?t=st=1742320253~exp=1742323853~hmac=f3edd221615f8bd2f0d498f2c1d6ffc909b6478914bce6141e730e5ca138a49c&w=826",
+              color: "from-pink-500 to-orange-500",
+            },
+            {
+              title: "Contact Lenses",
+              description: "Comfortable contacts for clear vision without frames",
+              image: "https://img.freepik.com/free-photo/close-up-woman-holding-container_23-2149190665.jpg?t=st=1742320401~exp=1742324001~hmac=000306ae8e81f1d1aa1e990f034ceeac8dfd3005a6da81ce16eb664e58fcf3a1&w=740",
+              color: "from-green-500 to-teal-500",
+            },
+            {
+              title: "Kids Glasses",
+              description: "Durable and colorful frames designed for children",
+              image: "https://img.freepik.com/free-photo/cheerful-female-student-stylish-eyewear-rejoices-successfully-passed-exams-glad-have-meeting-with-groupmates-delighted-beautiful-pleased-woman-has-attractive-look-poses-indoors_176420-15099.jpg?t=st=1742310034~exp=1742313634~hmac=135062e5548c46286c8ed5b98c6553b9c155e3a924a77cd2b17e580acc689326&w=1380",
+              color: "from-amber-500 to-red-500",
+            },
+            {
+              title: "Power Sunglasses",
+              description: "Prescription sunglasses for clear vision outdoors",
+              image: "https://img.freepik.com/free-photo/cheerful-female-student-stylish-eyewear-rejoices-successfully-passed-exams-glad-have-meeting-with-groupmates-delighted-beautiful-pleased-woman-has-attractive-look-poses-indoors_176420-15099.jpg?t=st=1742310034~exp=1742313634~hmac=135062e5548c46286c8ed5b98c6553b9c155e3a924a77cd2b17e580acc689326&w=1380",
+              color: "from-teal-500 to-green-500",
+            },
+          ].map((collection, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative overflow-hidden rounded-xl"
+            >
+              <div className="aspect-[3/4] overflow-hidden">
+                <Image
+                  src={collection.image || "/placeholder.svg"}
+                  alt={collection.title}
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div
+                className={`absolute inset-0 bg-gradient-to-t ${collection.color} opacity-60 transition-opacity duration-300 group-hover:opacity-80`}
+              ></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                <h3 className="text-xl font-bold mb-2">{collection.title}</h3>
+                <p className="mb-4 opacity-90">{collection.description}</p>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-gray-900 group-hover:w-32 transition-all duration-300 overflow-hidden"
+                >
+                  <span className="hidden group-hover:inline mr-1">Explore</span>
+                  <ChevronRight size={16} />
+                </motion.button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Bestsellers Section Component
+
+
+// Testimonials Section Component
+const TestimonialsSection = () => {
+  return (
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4"
           >
             What Our Customers Say
           </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div 
-                key={index}
-                className="bg-indigo-800 rounded-xl p-6"
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
-              >
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.049 2.927c<path d=M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
+          >
+            Don't just take our word for it – hear from our satisfied customers about their SpecsVue experience.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Sarah Johnson",
+              location: "New York, NY",
+              quote:
+                "The quality of my SpecsVue glasses is outstanding. I've received so many compliments, and the blue light filtering has significantly reduced my eye strain during long work hours.",
+              image: "/placeholder.svg?height=100&width=100",
+            },
+            {
+              name: "Michael Chen",
+              location: "San Francisco, CA",
+              quote:
+                "After trying several eyewear brands, I've finally found my perfect match with SpecsVue. The virtual try-on feature made it so easy to find frames that suit my face shape.",
+              image: "/placeholder.svg?height=100&width=100",
+            },
+            {
+              name: "Emma Rodriguez",
+              location: "Miami, FL",
+              quote:
+                "The customer service at SpecsVue is exceptional. They helped me find the perfect pair of glasses for my prescription and style preferences. I couldn't be happier!",
+              image: "/placeholder.svg?height=100&width=100",
+            },
+          ].map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <Image
+                    src={testimonial.image || "/placeholder.svg"}
+                    alt={testimonial.name}
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-gray-100 mb-4">"{testimonial.review}"</p>
-                <p className="font-semibold">- {testimonial.name}</p>
-              </motion.div>
-            ))}
+                <div>
+                  <h3 className="font-semibold">{testimonial.name}</h3>
+                  <p className="text-sm text-gray-500">{testimonial.location}</p>
+                </div>
+              </div>
+              <p className="text-gray-600 italic">"{testimonial.quote}"</p>
+              <div className="flex mt-4 text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i}>★</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// About Section Component
+const AboutSection = () => {
+  return (
+    <section id="about" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-4">
+              Our Story
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">About SpecsVue</h2>
+            <p className="text-gray-600 mb-4">
+              Founded in 2020, SpecsVue was born from a simple idea: eyewear should be both a medical necessity and a
+              fashion statement, without the premium price tag.
+            </p>
+            <p className="text-gray-600 mb-4">
+              Our founder, after years of overpaying for prescription glasses, decided to create a brand that offers
+              high-quality, stylish eyewear at accessible prices by cutting out the middlemen and connecting directly
+              with customers.
+            </p>
+            <p className="text-gray-600 mb-6">
+              Today, SpecsVue is a growing eyewear brand committed to helping people see better, look better, and feel
+              better through innovative designs, premium materials, and exceptional customer service.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all"
+            >
+              Learn More About Us
+            </motion.button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-video rounded-xl overflow-hidden">
+              <Image
+                src="https://img.freepik.com/free-photo/handsome-man-optics-shop_1157-23065.jpg?t=st=1742311049~exp=1742314649~hmac=f917cf90ac28794ea81f085f1c327512b65e22f440a9007b9291ea66dd0c460e&w=1380"
+                alt="About SpecsVue"
+                width={600}
+                height={400}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
+              <p className="text-gray-800 font-medium">
+                "Our mission is to make premium eyewear accessible to everyone while prioritizing quality, style, and
+                customer satisfaction."
+              </p>
+              <p className="text-purple-600 font-semibold mt-2">— SpecsVue Founder</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Newsletter Section Component
+
+const NewsletterSection = () => {
+  return (
+    <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-500 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4"
+          >
+            Stay in the Loop
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg max-w-2xl mx-auto opacity-90"
+          >
+            Subscribe to our newsletter for exclusive offers, new arrivals, and eyecare tips.
+          </motion.p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="max-w-md mx-auto"
+        >
+          <form className="flex flex-col sm:flex-row gap-2">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-grow px-4 py-3 rounded-lg focus:outline-none text-gray-800"
+              required
+            />
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              className="px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              Subscribe
+            </motion.button>
+          </form>
+          <p className="text-sm mt-2 opacity-80 text-center">
+            By subscribing, you agree to our Privacy Policy and consent to receive updates from SpecsVue.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+const ContactSection = () => {
+  return (
+    <section id="contact" className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left Side: Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-4">
+              Get In Touch
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
+            <p className="text-gray-600 mb-8">
+              Have questions about our products or services? Our team is here to help. Reach out to us through any of the channels below.
+            </p>
+
+            <div className="space-y-4">
+              {/* Contact Details */}
+              {[
+                { icon: "📍", title: "Visit Our Store", info: "123 Vision Street, Eyewear District, NY 10001" },
+                { icon: "📞", title: "Call Us", info: "+1 (555) 123-4567" },
+                { icon: "✉️", title: "Email Us", info: "info@specsvue.com" },
+                { icon: "⏰", title: "Opening Hours", info: "Monday - Friday: 9am - 6pm\nSaturday: 10am - 4pm\nSunday: Closed" }
+              ].map((item, index) => (
+                <div key={index} className="flex items-start">
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                    <span className="text-xl">{item.icon}</span>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-medium">{item.title}</h3>
+                    <p className="text-gray-600">{item.info}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Social Media Links */}
+            <div className="mt-8 flex space-x-4">
+              {[
+                { href: "#", label: "Instagram", icon: <Instagram size={20} /> },
+                { href: "#", label: "Facebook", icon: <Facebook size={20} /> },
+                { href: "#", label: "Twitter", icon: <Twitter size={20} /> }
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  href={social.href}
+                  className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 hover:bg-purple-200 transition-colors"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Side: Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <form className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                {/* First Name */}
+                <div>
+                  <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <input
+                    type="text"
+                    id="first-name"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                {/* Last Name */}
+                <div>
+                  <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <input
+                    type="text"
+                    id="last-name"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Email Address */}
+              <div className="mb-6">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              {/* Subject */}
+              <div className="mb-6">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              {/* Message */}
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all"
+              >
+                Send Message
+              </motion.button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+// Footer Component
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-white pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <Link href="/" className="flex items-center mb-4">
+              <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                SpecsVue
+              </span>
+            </Link>
+            <p className="text-gray-400 mb-4">
+              Premium eyewear for every style and need. See the world with clarity and confidence.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                <Facebook size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
+                <Twitter size={20} />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Shop</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  All Collections
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Best Sellers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  New Arrivals
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Sale Items
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Gift Cards
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Support</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  FAQs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Shipping & Returns
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Warranty
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Prescription Help
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Press
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Sustainability
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Affiliate Program
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </motion.section>
 
-      {/* 3D Glasses Viewer */}
-      <motion.section 
-        className="py-16 bg-gradient-to-b from-white to-indigo-50"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4"
-            variants={fadeInUp}
-          >
-            Try Before You Buy
-          </motion.h2>
-          
-          <motion.p 
-            className="text-xl text-gray-600 text-center max-w-2xl mx-auto mb-12"
-            variants={fadeInUp}
-          >
-            Use our virtual try-on technology to see how frames look on your face
-          </motion.p>
-          
-          <motion.div 
-            className="bg-white rounded-2xl shadow-xl overflow-hidden"
-            variants={fadeInUp}
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="p-8 lg:p-12">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Virtual Try-On Experience</h3>
-                <p className="text-gray-600 mb-6">
-                  Upload your photo or use your camera to see how our frames look on you. With our advanced AR technology, you can:
-                </p>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    Try on hundreds of frames in seconds
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    See frames from different angles
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    Compare different styles side by side
-                  </li>
-                </ul>
-                <motion.button 
-                  className="bg-indigo-600 text-white px-6 py-3 rounded-lg text-lg font-medium"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Launch Virtual Try-On
-                </motion.button>
-              </div>
-              <div className="bg-gray-100 h-80 lg:h-auto flex items-center justify-center">
-                <motion.div 
-                  className="w-64 h-64 relative"
-                  animate={{ rotateY: [0, 360] }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                >
-                  <div className="absolute inset-0 bg-[url('/api/placeholder/400/320')] bg-contain bg-center" />
-                </motion.div>
-              </div>
+        <div className="border-t border-gray-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              &copy; {new Date().getFullYear()} SpecsVue. All rights reserved.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+              <a href="#" className="hover:text-white transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Cookie Policy
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Accessibility
+              </a>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
-
-      {/* Newsletter */}
-      <motion.section 
-        className="py-16 bg-indigo-600 text-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="max-w-2xl mx-auto text-center"
-            variants={fadeInUp}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Newsletter</h2>
-            <p className="text-indigo-100 mb-8">Get updates on new collections, exclusive offers, and eye care tips</p>
-            <div className="flex flex-col md:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Enter your email address" 
-                className="px-6 py-3 rounded-lg flex-grow text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-300"
-              />
-              <motion.button 
-                className="px-6 py-3 bg-white text-indigo-600 font-medium rounded-lg whitespace-nowrap"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Subscribe
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-</div>
-  );
+      </div>
+    </footer>
+  )
 }
-export default Home;
+
+export default function Home() {
+  return (
+    <div className="min-h-screen">
+      <CollectionsSection />
+      <FeaturesSection />
+      <TestimonialsSection />
+      <AboutSection />
+      <NewsletterSection />
+      <ContactSection />
+      <Footer />
+    </div>
+  )
+}
+
