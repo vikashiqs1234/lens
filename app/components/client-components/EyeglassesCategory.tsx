@@ -10,7 +10,7 @@ const categoriesData = [
       {
         name: "CLASSIC EYEGLASSES Starting From ₹2000",
         price: 2000,
-        frameShapes: ["Rectangle Frames", "Wayfarer Frames", "Pentagonal"],
+        frameShapes: ["Rectangle Frames", "Wayfarer Frames", "Geometric Frames","Round Frames","Aviator Frames","Cat-Eye Frames"],
         collections: ["Switch Grip", "Urban Edit"],
         brands: ["Vincent Chase", "Lenskart Air"],
       },
@@ -353,9 +353,9 @@ const EyeglassesCategory = () => {
             <div className="space-y-2">
               {currentData.frameShapes.map((frame,ind) => (
                 
-                 <span key={ind}>
+                 <div key={ind}>
                   {frame}
-                 </span>
+                 </div>
               
               ))}
             </div>
@@ -366,9 +366,9 @@ const EyeglassesCategory = () => {
             <h3 className="font-semibold text-gray-700 mb-4 uppercase text-sm tracking-wider">Collection</h3>
             <div className="space-y-2">
               {currentData.collections.map((collection,ind) => (
-                <span key={ind}>
+                <div key={ind}>
                   {collection}
-                </span>
+                </div>
                 // <Link
                 //   key={collection}
                 //   href={`/products?category=${categoriesData[activeCategoryIndex].category}&priceCategory=${categoriesData[activeCategoryIndex].priceCategory[activePriceCategoryIndex].price}&collection=${collection}`}
@@ -385,9 +385,9 @@ const EyeglassesCategory = () => {
             <h3 className="font-semibold text-gray-700 mb-4 uppercase text-sm tracking-wider">Brands</h3>
             <div className="space-y-2">
               {currentData.brands.map((brand,index) => (
-                <span key={index}>
+                <div key={index}>
                   {brand}
-                </span>
+                </div>
                 // <Link
                 //   key={brand}
                 //   href={`/products?category=${categoriesData[activeCategoryIndex].category}&priceCategory=${categoriesData[activeCategoryIndex].priceCategory[activePriceCategoryIndex].price}&brand=${brand}`}

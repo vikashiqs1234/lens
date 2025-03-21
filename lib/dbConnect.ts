@@ -3,6 +3,7 @@
 import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI || ''
+console.log(MONGODB_URI)
 
 if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable')
@@ -32,7 +33,7 @@ export async function connectToDatabase() {
     cached.conn = await cached.promise
     console.log('[MongoDB] Successfully connected.')
   } catch (error) {
-    console.error('[MongoDB] Connection error:', error)
+    // console.error('[MongoDB] Connection error:', error)
     throw error
   }
 

@@ -17,7 +17,6 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Our Products</h2>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl mx-auto">
         {products.map((item: any, index: number) => (
           <ProductCard
@@ -28,6 +27,7 @@ const Page = () => {
             frameMaterial={item?.frameMaterial}
             frameSize={item?.frameSize}
             brandName={item?.brandName}
+            productId = {item?._id}
           />
         ))}
       </div>

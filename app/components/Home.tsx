@@ -99,7 +99,7 @@ const CollectionsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-5xl md:text-4xl font-bold mb-4"
           >
             Our Collections
           </motion.h2>
@@ -144,13 +144,13 @@ const CollectionsSection = () => {
             {
               title: "Kids Glasses",
               description: "Durable and colorful frames designed for children",
-              image: "https://img.freepik.com/free-photo/cheerful-female-student-stylish-eyewear-rejoices-successfully-passed-exams-glad-have-meeting-with-groupmates-delighted-beautiful-pleased-woman-has-attractive-look-poses-indoors_176420-15099.jpg?t=st=1742310034~exp=1742313634~hmac=135062e5548c46286c8ed5b98c6553b9c155e3a924a77cd2b17e580acc689326&w=1380",
+              image: "/images/kids-1.png",
               color: "from-amber-500 to-red-500",
             },
             {
               title: "Power Sunglasses",
               description: "Prescription sunglasses for clear vision outdoors",
-              image: "https://img.freepik.com/free-photo/cheerful-female-student-stylish-eyewear-rejoices-successfully-passed-exams-glad-have-meeting-with-groupmates-delighted-beautiful-pleased-woman-has-attractive-look-poses-indoors_176420-15099.jpg?t=st=1742310034~exp=1742313634~hmac=135062e5548c46286c8ed5b98c6553b9c155e3a924a77cd2b17e580acc689326&w=1380",
+              image: "/images/sunglasses.png",
               color: "from-teal-500 to-green-500",
             },
           ].map((collection, index) => (

@@ -1,12 +1,13 @@
 import React from 'react'
-import LandingPageBanner from './components/client-components/LandingPageBanner'
+
 import Home from './components/Home'
+import Hero from './components/client-components/Hero'
 
 
 const page = () => {
   return (
 <>
-<LandingPageBanner/>
+<Hero/>
 <Home/>
 </>
   )

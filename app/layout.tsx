@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Epilogue } from 'next/font/google'
+import { DM_Serif_Display, Epilogue } from "next/font/google";
 import "./globals.css";
-import Header from '@/app/components/Header'
+import Header from "@/app/components/Header";
+import ReduxProvider from "./ReduxProvider";
+
 
 const dmSerif = DM_Serif_Display({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-dm-serif'
-})
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-dm-serif",
+});
 
 const epilogue = Epilogue({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-epilogue'
-})
-
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-epilogue",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,12 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"  className={`${dmSerif.variable} ${epilogue.variable}`}>
-      <body
-      
-      >
-       <Header/>
-        {children}
+    <html lang="en" className={`${dmSerif.variable} ${epilogue.variable}`}>
+      <body>
+        <ReduxProvider >
+          <Header />
+
+          {children}
+        </ReduxProvider>
+       
       </body>
     </html>
   );
