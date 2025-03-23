@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import ImagesPart from '../ImagesPart'
 import InfoPart from '../InfoPart'
 import Loading from '@/app/components/Loading'
+import ProductDetails from '../ProductDetails'
 
 const ExploreProductPage = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
@@ -52,7 +53,7 @@ const ExploreProductPage = () => {
       
 
         {/* Product Content */}
-        <div className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-gray-50overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             {/* Images Section */}
             <div className="w-full lg:w-3/5 p-4 md:p-8">
@@ -65,7 +66,9 @@ const ExploreProductPage = () => {
             </div>
           </div>
         </div>
-       
+       {
+        product&&<ProductDetails product={product}/>
+       }
       </div>
     </div>
   )

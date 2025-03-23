@@ -1,104 +1,55 @@
-// pages/index.js
-import Head from 'next/head';
-import Link from 'next/link';
+"use client";
+import React from "react";
 
 export default function ContactLenses() {
-  const brands = [
-    "Aqualens",
-    "Bausch Lomb",
-    "Soflens",
-    "Acuvue",
-    "Iconnect",
-    "Alcon"
-  ];
-
-  const disposability = [
-    "Monthly",
-    "Day & Night",
-    "Daily",
-    "Yearly",
-    "Bi-weekly"
-  ];
-
-  const powers = [
-    "Spherical - (CYL-0.5)",
-    "Spherical + (CYL-0.5)",
-    "Cylindrical Power(>0.75)",
-    "Toric Power"
-  ];
-
-  const colors = [
-    "Green",
-    "Blue",
-    "Brown",
-    "Turquoise",
-    "View all colors"
-  ];
-
-  const solutions = [
-    "Small",
-    "Large",
-    "View all solutions"
-  ];
+  const disposability = ["Monthly", "Day & Night", "Daily", "Yearly", "Bi-weekly"];
+  const powers = ["Spherical - (CYL-0.5)", "Spherical + (CYL-0.5)", "Cylindrical Power(>0.75)", "Toric Power"];
+  const colors = ["Green", "Blue", "Brown", "Turquoise", "View all colors"];
+  const solutions = ["Small", "Large", "View all solutions"];
 
   return (
-    <div className="absolute z-[100] left-0 w-full bg-white">
-      <Head>
-        <title>Contact Lens Comparison</title>
-        <meta name="description" content="Compare different contact lens options" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="container mx-auto px-4 py-8">
-        <div className="border-b border-gray-200">
-          <div className="grid grid-cols-5 text-gray-900 font-medium pb-4">
-            <div>Brands</div>
-            <div>Explore By Disposability</div>
-            <div>Explore By Power</div>
-            <div>Explore By Color</div>
-            <div>Solution</div>
-          </div>
+    <div className="w-[96%] mx-auto bg-white py-6 px-6">
+      <div className="grid grid-cols-4 gap-6">
+        {/* Disposability */}
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">DISPOSABILITY</h3>
+          {disposability.map((item, idx) => (
+            <p key={idx} className="py-2 px-3 rounded hover:bg-gray-100 text-sm text-gray-700 cursor-pointer">
+              {item}
+            </p>
+          ))}
         </div>
 
-        <div className="mt-4">
-          <div className="grid grid-cols-5 gap-4">
-            {/* Brands Column */}
-            <div className="space-y-4">
-              {brands.map((brand, index) => (
-                <div key={index} className="text-gray-500">{brand}</div>
-              ))}
-            </div>
-
-            {/* Disposability Column */}
-            <div className="space-y-4">
-              {disposability.map((item, index) => (
-                <div key={index} className="text-gray-500">{item}</div>
-              ))}
-            </div>
-
-            {/* Power Column */}
-            <div className="space-y-4">
-              {powers.map((power, index) => (
-                <div key={index} className="text-gray-500">{power}</div>
-              ))}
-            </div>
-
-            {/* Color Column */}
-            <div className="space-y-4">
-              {colors.map((color, index) => (
-                <div key={index} className="text-gray-500">{color}</div>
-              ))}
-            </div>
-
-            {/* Solution Column */}
-            <div className="space-y-4">
-              {solutions.map((solution, index) => (
-                <div key={index} className="text-gray-500">{solution}</div>
-              ))}
-            </div>
-          </div>
+        {/* Power */}
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">POWER</h3>
+          {powers.map((item, idx) => (
+            <p key={idx} className="py-2 px-3 rounded hover:bg-gray-100 text-sm text-gray-700 cursor-pointer">
+              {item}
+            </p>
+          ))}
         </div>
-      </main>
+
+        {/* Color */}
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">COLOR</h3>
+          {colors.map((item, idx) => (
+            <p key={idx} className="py-2 px-3 rounded hover:bg-gray-100 text-sm text-gray-700 cursor-pointer">
+              {item}
+            </p>
+          ))}
+        </div>
+
+        {/* Solution */}
+        <div>
+          <h3 className="font-semibold text-gray-700 mb-3">SOLUTION</h3>
+          {solutions.map((item, idx) => (
+            <p key={idx} className="py-2 px-3 rounded hover:bg-gray-100 text-sm text-gray-700 cursor-pointer">
+              {item}
+            </p>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

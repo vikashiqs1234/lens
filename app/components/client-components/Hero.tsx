@@ -3,23 +3,26 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const slides = [
   {
     id: 1,
-    title: "Premium Prescription Glasses",
-    description: "Explore our wide range of high-quality prescription glasses with a SPECIAL 20% DISCOUNT on all prescription lenses. Expert vision care that's affordable!",
+    title: "Get 20% Off on Eyewear with  Prescription",
+    description: "Unlock 20% off on your next pair of eyeglasses when you upload your prescription at VisionHub. Enjoy clear vision with stylish frames, unmatched comfort, and expert-recommended lenses — all at a discounted price.",
     image: "/images/banner-3.png",
     cta: "Save 20% Now",
-    alt: "Collection of premium prescription glasses frames"
+    alt: "Collection of premium prescription glasses frames",
+    nav:"prescription"
   },
   {
     id: 2,
-    title: "Welcome to VisionHub Eyewear",
-    description: "Experience unmatched comfort, crystal clarity, and modern style. Find your perfect pair of glasses with our expert guidance.",
+    title: "See the World in Style",
+    description: "Discover sleek, comfortable eyewear crafted to fit your face and your lifestyle. Explore frames that elevate your everyday look.",
     image: "/images/banner-4.png",
     cta: "Discover Our Collection",
-    alt: "VisionHub eyewear shop showcase featuring stylish glasses"
+    alt: "VisionHub eyewear shop showcase featuring stylish glasses",
+    nav:"products"
   },
 ];
 
@@ -47,22 +50,22 @@ const Hero = () => {
   return (
     <section 
       aria-label="Featured eyewear collections"
-      className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden  bg-black"
+      className="relative w-full h-[calc(100vh-170px)] md:h-[calc(100vh-126px)]  overflow-hidden bg-black"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
       {/* Background container (always black) */}
-      <div className="absolute inset-0 bg-black z-0"></div>
+      <div className="absolute  inset-0 bg-black z-0"></div>
       
       {/* Slides with absolute positioning */}
       <div className="absolute inset-0 z-10 overflow-hidden">
-        <AnimatePresence initial={false} mode="wait">
+        <AnimatePresence mode="sync">
           <motion.div
             key={slides[currentSlide].id}
             initial={{ opacity: 0, x: 300 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -300 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             {/* Image with overlay */}
@@ -78,38 +81,39 @@ const Hero = () => {
             </div>
             
             {/* Content */}
-            <div className="absolute inset-0 z-20 flex items-center">
+            <div className="absolute inset-0 z-5 flex items-center">
               <div className="container mx-auto px-4 md:px-8">
-                <div className="max-w-2xl pl-[60px]">
+                <div className="max-w-4xl">
                   <motion.h2 
-                    initial={{ y: 30, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
+                    transition={{ duration: 0.3 }}
+                    className="text-3xl text-center sm:text-left sm:text-5xl md:text-6xl font-bold text-white mb-6"
                   >
                     {slides[currentSlide].title}
                   </motion.h2>
                   
                   <motion.p 
-                    initial={{ y: 30, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-8 max-w-lg"
+                    transition={{ duration: 0.3 }}
+                    className="text-lg text-center sm:text-left sm:text-xl md:text-xl text-gray-100 mb-8 max-w-xl"
                   >
                     {slides[currentSlide].description}
                   </motion.p>
                   
                   <motion.div
-                    initial={{ y: 30, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex justify-center sm:justify-start"
                   >
-                    <a 
-                      href={`/collections/${slides[currentSlide].id}`}
-                      className="inline-block px-6 py-4 bg-white text-black text-lg font-medium rounded-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg"
+                    <Link
+                      href={`/${slides[currentSlide].nav}`}
+                      className="inline-block  px-5 py-2 sm:px-6 sm:py-4 bg-white text-black text-lg font-medium rounded-[50px] hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg"
                     >
                       {slides[currentSlide].cta}
-                    </a>
+                    </Link>
                   </motion.div>
                 </div>
               </div>
@@ -122,7 +126,7 @@ const Hero = () => {
       <div className="absolute inset-y-0 left-0 flex items-center z-30">
         <button 
           onClick={goToPrevSlide}
-          className="ml-4 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-all transform hover:scale-110 backdrop-blur-sm"
+          className=" p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-all transform hover:scale-110 "
           aria-label="Previous slide"
         >
           <ChevronLeft size={28} />
@@ -132,7 +136,7 @@ const Hero = () => {
       <div className="absolute inset-y-0 right-0 flex items-center z-30">
         <button 
           onClick={goToNextSlide}
-          className="mr-4 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-all transform hover:scale-110 backdrop-blur-sm"
+          className=" p-3 rounded-full bg-black/40 hover:bg-black/60 text-white transition-all transform hover:scale-110 "
           aria-label="Next slide"
         >
           <ChevronRight size={28} />

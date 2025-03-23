@@ -2,7 +2,10 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const ImagesPart = ({ images }) => {
+interface Images{
+  images:string[];
+}
+const ImagesPart:React.FC<Images> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(images[0] || "");
 
   return (

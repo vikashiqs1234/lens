@@ -5,7 +5,6 @@ import ScreenGlassesCategory from './ScreenGlasses';
 import KidsGlasses from './KidsGlasses';
 import ContactLenses from './ContactLenses';
 import SunGlassesCategory from './SunGlassesCategory';
-import HomeEyeCheckBanner from './HomeEyeCheck';
 
 const componentMap = {
   eyeglasses: EyeglassesCategory,
@@ -13,7 +12,6 @@ const componentMap = {
   kidsglasses: KidsGlasses,
   contactlens: ContactLenses,
   sunglasses: SunGlassesCategory,
-  homeeyecheck: HomeEyeCheckBanner,
 };
 
 // Create a type of all keys
@@ -33,14 +31,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative w-full">
-      <nav className="bg-[#fbf9f7] border-b border-gray-200 px-4 sm:px-6 md:px-8">
-        <ul className="flex items-center space-x-4 overflow-x-auto py-3 text-sm font-medium text-gray-700">
+    <div className="relative max-w-[1400px] mx-auto">
+      <nav className="p-4 overflow-x-auto">
+        <ul className="flex items-center space-x-6  md:space-x-14  text-sm font-medium text-gray-400">
           {Object.keys(componentMap).map((key) => (
             <li
               key={key}
               onMouseEnter={() => handleMouseEnter(key as ComponentKey)}
-              className="px-3 py-2 cursor-pointer hover:text-blue-600 transition-colors whitespace-nowrap rounded hover:bg-gray-100"
+              className="cursor-pointer   transition-colors whitespace-nowrap rounded"
             >
               {key.replace(/([A-Z])/g, ' $1').toUpperCase()}
             </li>
@@ -51,7 +49,7 @@ const Navbar = () => {
       {activeComponent && (
         <div
           onMouseLeave={handleMouseLeave}
-          className="absolute z-30 left-0 w-full  bg-white border border-t-0 border-gray-200 shadow-md"
+          className="absolute z-30 left-0 w-full"
         >
           {React.createElement(componentMap[activeComponent])}
         </div>

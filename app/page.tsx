@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import Home from './components/Home'
-import Hero from './components/client-components/Hero'
-
+import Home from "./components/Home";
+import Hero from "./components/client-components/Hero";
 
 const page = () => {
   return (
-<>
-<Hero/>
-<Home/>
-</>
-  )
-}
+    <>
+      <Hero />
+      <Home />
+    </>
+  );
+};
 
-export default page
+export default page;
